@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Grishanina41PModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Children">
+          <Key>
+            <PropertyRef Name="ID_children" />
+          </Key>
+          <Property Name="ID_children" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_group" Type="int" Nullable="false" />
+          <Property Name="physical_1" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="physical_2" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="physical_3" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="physical_4" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="physical_5" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="physical_6" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="physical_7" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="artistic_1" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="artistic_2" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="artistic_3" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="artistic_4" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="artistic_5" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="artistic_6" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="artistic_7" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="speech_1" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="speech_2" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="speech_3" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="speech_4" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="speech_5" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="speech_6" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="speech_7" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="cognitive_1" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="cognitive_2" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="cognitive_3" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="cognitive_4" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="cognitive_5" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="cognitive_6" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="cognitive_7" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="social_1" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="social_2" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="social_3" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="social_4" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="social_5" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="social_6" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="social_7" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="ID_group" />
+          </Key>
+          <Property Name="ID_group" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_group" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_user" />
+          </Key>
+          <Property Name="ID_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserSurname" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserPatronymic" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Children_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Children" Type="Self.Children" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID_group" />
+            </Principal>
+            <Dependent Role="Children">
+              <PropertyRef Name="ID_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Grishanina41PModelContainer">
+          <EntitySet Name="Children" EntityType="Self.Children" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Children_Group" Association="Self.FK_Children_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Children" EntitySet="Children" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Grishanina41PModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Children">
+          <Key>
+            <PropertyRef Name="ID_children" />
+          </Key>
+          <Property Name="ID_children" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_group" Type="Int32" Nullable="false" />
+          <Property Name="physical_1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="physical_2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="physical_3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="physical_4" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="physical_5" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="physical_6" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="physical_7" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artistic_1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artistic_2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artistic_3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artistic_4" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artistic_5" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artistic_6" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="artistic_7" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="speech_1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="speech_2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="speech_3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="speech_4" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="speech_5" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="speech_6" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="speech_7" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognitive_1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognitive_2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognitive_3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognitive_4" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognitive_5" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognitive_6" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cognitive_7" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="social_1" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="social_2" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="social_3" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="social_4" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="social_5" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="social_6" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="social_7" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Children_Group" FromRole="Children" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="ID_group" />
+          </Key>
+          <Property Name="ID_group" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_group" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Children" Relationship="Self.FK_Children_Group" FromRole="Group" ToRole="Children" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_user" />
+          </Key>
+          <Property Name="ID_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserSurname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPatronymic" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Children_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Children" Type="Self.Children" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="ID_group" />
+            </Principal>
+            <Dependent Role="Children">
+              <PropertyRef Name="ID_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Grishanina41PEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Children" EntityType="Self.Children" />
+          <EntitySet Name="Group" EntityType="Self.Group" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Children_Group" Association="Self.FK_Children_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Children" EntitySet="Children" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Grishanina41PModelContainer" CdmEntityContainer="Grishanina41PEntities">
+          <EntitySetMapping Name="Children">
+            <EntityTypeMapping TypeName="Grishanina41PModel.Children">
+              <MappingFragment StoreEntitySet="Children">
+                <ScalarProperty Name="ID_children" ColumnName="ID_children" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="ID_group" ColumnName="ID_group" />
+                <ScalarProperty Name="physical_1" ColumnName="physical_1" />
+                <ScalarProperty Name="physical_2" ColumnName="physical_2" />
+                <ScalarProperty Name="physical_3" ColumnName="physical_3" />
+                <ScalarProperty Name="physical_4" ColumnName="physical_4" />
+                <ScalarProperty Name="physical_5" ColumnName="physical_5" />
+                <ScalarProperty Name="physical_6" ColumnName="physical_6" />
+                <ScalarProperty Name="physical_7" ColumnName="physical_7" />
+                <ScalarProperty Name="artistic_1" ColumnName="artistic_1" />
+                <ScalarProperty Name="artistic_2" ColumnName="artistic_2" />
+                <ScalarProperty Name="artistic_3" ColumnName="artistic_3" />
+                <ScalarProperty Name="artistic_4" ColumnName="artistic_4" />
+                <ScalarProperty Name="artistic_5" ColumnName="artistic_5" />
+                <ScalarProperty Name="artistic_6" ColumnName="artistic_6" />
+                <ScalarProperty Name="artistic_7" ColumnName="artistic_7" />
+                <ScalarProperty Name="speech_1" ColumnName="speech_1" />
+                <ScalarProperty Name="speech_2" ColumnName="speech_2" />
+                <ScalarProperty Name="speech_3" ColumnName="speech_3" />
+                <ScalarProperty Name="speech_4" ColumnName="speech_4" />
+                <ScalarProperty Name="speech_5" ColumnName="speech_5" />
+                <ScalarProperty Name="speech_6" ColumnName="speech_6" />
+                <ScalarProperty Name="speech_7" ColumnName="speech_7" />
+                <ScalarProperty Name="cognitive_1" ColumnName="cognitive_1" />
+                <ScalarProperty Name="cognitive_2" ColumnName="cognitive_2" />
+                <ScalarProperty Name="cognitive_3" ColumnName="cognitive_3" />
+                <ScalarProperty Name="cognitive_4" ColumnName="cognitive_4" />
+                <ScalarProperty Name="cognitive_5" ColumnName="cognitive_5" />
+                <ScalarProperty Name="cognitive_6" ColumnName="cognitive_6" />
+                <ScalarProperty Name="cognitive_7" ColumnName="cognitive_7" />
+                <ScalarProperty Name="social_1" ColumnName="social_1" />
+                <ScalarProperty Name="social_2" ColumnName="social_2" />
+                <ScalarProperty Name="social_3" ColumnName="social_3" />
+                <ScalarProperty Name="social_4" ColumnName="social_4" />
+                <ScalarProperty Name="social_5" ColumnName="social_5" />
+                <ScalarProperty Name="social_6" ColumnName="social_6" />
+                <ScalarProperty Name="social_7" ColumnName="social_7" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="Grishanina41PModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="ID_group" ColumnName="ID_group" />
+                <ScalarProperty Name="Name_group" ColumnName="Name_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Grishanina41PModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Grishanina41PModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+                <ScalarProperty Name="UserPatronymic" ColumnName="UserPatronymic" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
